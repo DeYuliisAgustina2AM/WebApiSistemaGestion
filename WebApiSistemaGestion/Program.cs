@@ -18,6 +18,7 @@ namespace WebApiSistemaGestion
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<ProductoService>();
             builder.Services.AddScoped<UsuarioService>();
+            builder.Services.AddScoped<ProductoVendidoService>();
 
             builder.Services.AddDbContext<CoderContext>(options =>
             {
