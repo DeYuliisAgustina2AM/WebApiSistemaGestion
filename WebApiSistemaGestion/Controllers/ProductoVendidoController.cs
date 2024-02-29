@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApiSistemaGestion.DTOs;
+using WebApiSistemaGestion.Mapper;
+using WebApiSistemaGestion.Models;
 using WebApiSistemaGestion.Service;
 
 namespace WebApiSistemaGestion.Controllers
@@ -16,17 +19,26 @@ namespace WebApiSistemaGestion.Controllers
         }
 
         [HttpGet("{idUsuario}")]
-        public IActionResult <List<ProductoVendido>> ObtenerProductoPorIdUsuario(int idUsuario)
+        public ActionResult<List<ProductoVendidoDTO>> ObtenerProductosVendidosPorUsuario(int idUsuario)
         {
-            var productos = productoVendidoService.ObtenerProductoPorIdUsuario(idUsuario);
+            var productosVendidos = productoVendidoService.ObtenerProductosVendidosPorUsuario(idUsuario);
 
-            if (productos == null)
+            if (productosVendidos == null)
             {
                 return NotFound();
             }
 
-            return Ok(productos);
+            var productosVendidosDTO = new List<ProductoVendidoDTO>();
+
+            foreach (var productoVendido in productosVendidos)
+            {
+                productosVendidosDTO.Add(ProductoVendidoMapper.MapearProductoVendidoADTO(productoVendido)); // Se utiliza el método MappearAProductoVendidoDTO
+            }
+
+            return Ok(productosVendidosDTO);
         }
+
+
 
     }
 }

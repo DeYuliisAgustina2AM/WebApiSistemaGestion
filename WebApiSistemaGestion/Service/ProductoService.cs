@@ -17,6 +17,8 @@ namespace WebApiSistemaGestion.Service
             this.context = coderContext;
         }
 
+
+
         public ProductoDTO ObtenerProductoPorIdUsuario(int IdUsuario)
         {
             var usuario = context.Usuarios.Find(IdUsuario);

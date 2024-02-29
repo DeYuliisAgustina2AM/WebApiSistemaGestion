@@ -19,10 +19,11 @@ namespace WebApiSistemaGestion
             builder.Services.AddScoped<ProductoService>();
             builder.Services.AddScoped<UsuarioService>();
             builder.Services.AddScoped<ProductoVendidoService>();
+            builder.Services.AddScoped<VentaService>();
 
             builder.Services.AddDbContext<CoderContext>(options =>
             {
-                options.UseSqlServer("Server=DESKTOP-FPDJKD9\\SQLEXPRESS; Database=coderhouse; Trusted_Connection=True;");
+                options.UseSqlServer("Server=RCAL9P02-71619; Database=coderhouse; Trusted_Connection=True;");
             });
 
             var app = builder.Build();
