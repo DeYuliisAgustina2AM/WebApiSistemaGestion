@@ -32,13 +32,13 @@ namespace WebApiSistemaGestion.Controllers
         }
 
         [HttpPost]
-        public IActionResult AgregarUnNuevoProducto([FromBody] ProductoDTO producto)
+        public IActionResult AgregarUnNuevoProducto([FromBody] ProductoDTO productoDTO)
         {
-
-            if (this.productoService.AgregarUnProducto(producto))
+            
+            if (this.productoService.AgregarUnProducto(productoDTO))
             {
 
-                return base.Ok(new { mensaje = "Prodcuto agregado", producto });
+                return base.Ok(new { mensaje = "Prodcuto agregado", productoDTO });
             }
             else
             {

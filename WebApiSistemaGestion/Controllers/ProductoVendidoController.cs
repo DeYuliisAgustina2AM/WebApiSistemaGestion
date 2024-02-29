@@ -16,7 +16,7 @@ namespace WebApiSistemaGestion.Controllers
         }
 
         [HttpGet("{idUsuario}")]
-        public IActionResult ObtenerProductoPorIdUsuario(int idUsuario)
+        public IActionResult <List<ProductoVendido>> ObtenerProductoPorIdUsuario(int idUsuario)
         {
             var productos = productoVendidoService.ObtenerProductoPorIdUsuario(idUsuario);
 
