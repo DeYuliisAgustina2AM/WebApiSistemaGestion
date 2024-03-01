@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApiSistemaGestion.DTOs;
 using WebApiSistemaGestion.Models;
 using WebApiSistemaGestion.Service;
 
@@ -9,14 +10,37 @@ namespace WebApiSistemaGestion.Controllers
 
     public class VentaController : Controller
     {
-        private VentaService VentaService;
+        private VentaService ventaService;
 
-        public VentaController(VentaService VentaService)
+        public VentaController(VentaService ventaService)
         {
-            this.VentaService = VentaService;
+            this.ventaService = ventaService;
         }
 
-       
+        [HttpGet("{IdUsuario}/producto")]
+        public ActionResult<VentaDTO> ObtenerVentaPorIdUsuario(int IdUsuario)
+        {
+            VentaDTO venta = ventaService.ObtenerVentaPorIdUsuario(IdUsuario);
+
+            if (venta == null)
+            {
+                return NotFound();
+            }
+            return venta;
+        }
+
+        [HttpPost]
+        [Route("AgregarUnaVenta")]
+        public IActionResult AgregarUnaVenta([FromBody] VentaDTO venta)
+        {
+            if (venta == null)
+            {
+                return BadRequest();
+            }
+            ventaService.AgregarUnaVenta(venta);
+
+            return Ok();
+        }
 
     }
 }

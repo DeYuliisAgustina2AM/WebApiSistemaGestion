@@ -17,12 +17,12 @@ namespace WebApiSistemaGestion.Mapper
             return ventaDTO;
         }
 
-        public static Venta MapearDTOAVenta(Venta dto)
+        public static Venta MapearDTOAVenta(VentaDTO VentaDTO)
         {
             Venta venta = new Venta();
-            venta.Id = dto.Id;
-            venta.Comentarios = dto.Comentarios;
-            venta.IdUsuario = dto.IdUsuario;
+            venta.Id = VentaDTO.Id;
+            venta.Comentarios = VentaDTO.Comentarios;
+            venta.IdUsuario = VentaDTO.IdUsuario;
             
 
             return venta;

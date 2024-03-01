@@ -23,7 +23,7 @@ namespace WebApiSistemaGestion
 
             builder.Services.AddDbContext<CoderContext>(options =>
             {
-                options.UseSqlServer("Server=RCAL9P02-71619; Database=coderhouse; Trusted_Connection=True;");
+                options.UseSqlServer("Server=DESKTOP-FPDJKD9\\SQLEXPRESS; Database=coderhouse; Trusted_Connection=True;");
             });
 
             var app = builder.Build();
